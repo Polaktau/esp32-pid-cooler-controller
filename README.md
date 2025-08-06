@@ -61,7 +61,32 @@ Install these libraries via the Arduino IDE Library Manager.
     #define FAN_PIN 5
     ```
 4.  Compile and upload the sketch to your ESP32 board.
+### Time Zone Configuration
 
+The device uses NTP to get the current time. By default, it is configured for Kaliningrad time (GMT+2).
+
+To change the time zone:
+
+1.  Open `cooler_controller.ino` in the Arduino IDE.
+2.  Find the section `// === НАСТРОЙКИ NTP ===`.
+3.  Modify the `GMT_OFFSET_SEC` value:
+    *   Calculate the offset in seconds from UTC (GMT). For example:
+        *   Moscow Time (GMT+3): `#define GMT_OFFSET_SEC 10800`
+        *   London Time (GMT+0): `#define GMT_OFFSET_SEC 0`
+        *   New York Time (EST, GMT-5): `#define GMT_OFFSET_SEC -18000`
+        *   Tokyo Time (GMT+9): `#define GMT_OFFSET_SEC 32400`
+    *   Also adjust `DAYLIGHT_OFFSET_SEC` if your region observes Daylight Saving Time (e.g., set to `3600` for +1 hour during DST, `0` otherwise). For Kaliningrad, it's `0`.
+4.  Save the file and re-upload the sketch to your ESP32.
+
+### Accessing the Web Interface
+
+1.  Ensure the device is powered on and successfully connected to your Wi-Fi network.
+2.  Find the assigned IP address:
+    *   **Method 1 (Serial Monitor):** Open the Serial Monitor in the Arduino IDE (baud rate 115200). Look for a line like `IP адрес: 192.168.1.100` after the device boots.
+    *   **Method 2 (Router Dashboard):** Log into your router's administration page. Look for a list of connected devices. Find the device named `cryomind-esp32` or with a similar MAC address and note its IP address.
+3.  Open a web browser on any device connected to the same network.
+4.  Enter the IP address (e.g., `http://192.168.1.100`) into the browser's address bar and press Enter.
+5.  The web interface should load. You can also try accessing it via mDNS if your network supports it: `http://cryomind-esp32.local` (Note: mDNS might not work on all devices or networks).
 ## Usage
 
 1.  Power on the device. It will connect to the configured Wi-Fi network.
