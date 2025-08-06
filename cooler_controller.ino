@@ -12,7 +12,7 @@
 #include <ArduinoOTA.h>           // Для OTA обновлений
 
 // Конфигурация WiFi
-const char PROGMEM _ssid[] = "SSID_WIFI";      // SSID WiFi сети
+const char PROGMEM _ssid[] = "WIFI";      // SSID WiFi сети
 const char PROGMEM _password[] = "12345678"; // Пароль WiFi сети
 
 // Пин-конфигурация
@@ -42,7 +42,7 @@ const char PROGMEM _password[] = "12345678"; // Пароль WiFi сети
 
 // Настройки NTP
 #define NTP_SERVER "europe.pool.ntp.org" // NTP сервер
-#define GMT_OFFSET_SEC 7200              // Смещение по времени для Калининграда (UTC+2) в секундах
+#define GMT_OFFSET_SEC 7200              // Смещение по времени для Калининграда (UTC+2) в секундах.
 #define DAYLIGHT_OFFSET_SEC 0            // Смещение летнего времени (0 для Калининграда)
 #define RESTART_HOUR 0                   // Час перезагрузки (0 = полночь)
 #define RESTART_MINUTE 0                 // Минута перезагрузки (0 = ровно)
